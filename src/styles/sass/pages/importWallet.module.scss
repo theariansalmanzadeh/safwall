@@ -1,0 +1,44 @@
+@import "../utils/Variables.scss";
+@import "../components/SubmitButton.module.scss";
+@import "../layout/background.module.scss";
+
+.ImportWalletPage {
+  height: 90vh;
+  &.ImportWalletPageDark {
+    @include BG-dark;
+  }
+  & form {
+    padding-top: 5rem;
+    margin: 0rem auto 0 auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    @media screen and (max-width: 760px) {
+      width: 70%;
+    }
+    & label {
+      font-size: 2rem;
+      color: $scondaryCol;
+      @media screen and (max-width: 760px) {
+        font-size: 1.6rem;
+      }
+    }
+    & input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid $scondaryCol;
+      border-radius: 0.5rem;
+      outline: none;
+    }
+    & button {
+      @include submitBtn;
+      padding: 0.4rem 1.6rem;
+      align-self: flex-end;
+      @media screen and (max-width: 760px) {
+        align-self: stretch;
+      }
+    }
+  }
+}

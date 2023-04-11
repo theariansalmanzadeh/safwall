@@ -1,0 +1,6 @@
+@import "../utils/Variables.scss";
+
+@mixin BG-dark {
+  background-color: $SecondaryDark;
+  color: $primaryWhite;
+}

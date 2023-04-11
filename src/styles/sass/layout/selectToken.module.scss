@@ -1,0 +1,84 @@
+@import "../utils/Variables.scss";
+
+.selectTokenSection {
+  width: 30%;
+  height: 80vh;
+  border-radius: 1rem;
+  background-color: $primaryCol;
+  position: absolute;
+  z-index: 1000;
+  box-shadow: 1rem 1rem 0.8rem rgba(0, 0, 0, 0.3),
+    -1rem 0rem 0.8rem rgba(0, 0, 0, 0.3);
+  @media screen and (max-width: 760px) {
+    width: 90%;
+    height: 60vh;
+  }
+  &.active {
+    animation: fadeIn 0.3s linear;
+  }
+  &.deactive {
+    animation: fadeOut 0.3s linear;
+  }
+  & .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $primaryWhite;
+    padding: 1rem 0.5rem 0 0.5rem;
+    & p {
+      font-size: 1.2rem;
+    }
+    & button {
+      background-color: transparent;
+      border: none;
+      color: $secondaryWhite;
+      cursor: pointer;
+      font-size: 1.8rem;
+    }
+  }
+  & ul {
+    display: flex;
+    // flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0rem 1rem;
+    & li {
+      display: flex;
+      align-items: center;
+      margin-top: 0.6rem;
+      width: 30%;
+      background-color: $thirdCol;
+      border-radius: 1.2rem;
+      cursor: pointer;
+      & img {
+        width: 2rem;
+      }
+      & p {
+        color: $secondaryWhite;
+        padding-top: 1rem;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}

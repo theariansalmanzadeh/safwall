@@ -1,0 +1,85 @@
+@import "../utils/Variables.scss";
+@import "../layout/background.module.scss";
+@import "../components/SubmitButton.module.scss";
+
+.logInSection {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  &.dark {
+    @include BG-dark;
+    & .error {
+    }
+  }
+  & .error {
+    width: 20vw;
+    height: 5vh;
+    // background-color: $secondaryWhite;
+    color: $secondaryWhite;
+    background-color: $warning;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border: 3px solid $secondaryIncorrect;
+    top: 50%;
+    right: 10%;
+    border-radius: 0.8rem;
+  }
+  & .importwallet {
+    text-align: center;
+  }
+
+  & .formSection {
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 50%;
+    & input {
+      width: 50%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 1rem;
+      border: 1px solid $scondaryCol;
+      @media screen and (max-width: 760px) {
+        width: 90%;
+        margin-top: 2rem;
+      }
+    }
+    & button {
+      @include submitBtn;
+      margin-top: 2rem;
+      font-size: 1rem;
+      padding: 0.5rem 3.6rem;
+      border-radius: 1rem;
+    }
+  }
+  & .loadWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & .loader {
+      font-size: 3rem;
+      color: $scondaryCol;
+      animation: spinning 1.4s infinite linear;
+    }
+  }
+}
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

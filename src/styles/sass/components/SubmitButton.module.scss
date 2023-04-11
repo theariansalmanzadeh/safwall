@@ -1,0 +1,14 @@
+@import "../utils/Variables.scss";
+
+@mixin submitBtn {
+  border-radius: 0.5rem;
+  border: 3px solid $scondaryCol;
+  background-color: $scondaryCol;
+  color: $primaryWhite;
+  cursor: pointer;
+  box-shadow: 0rem 0rem 0.8rem rgba(0, 0, 0, 0.2),
+    0rem 1rem 1rem rgba(0, 0, 0, 0.1);
+  &:hover {
+    background-color: $secondaryColDark;
+  }
+}

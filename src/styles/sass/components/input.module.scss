@@ -1,0 +1,8 @@
+@import "../utils/Variables.scss";
+
+@mixin input {
+  padding: 0.4rem;
+  border-radius: 0.8rem;
+  border: 2px solid $scondaryCol;
+  outline: none;
+}

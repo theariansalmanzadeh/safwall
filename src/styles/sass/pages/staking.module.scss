@@ -1,0 +1,79 @@
+@import "../utils/Variables.scss";
+@import "../layout/background.module.scss";
+@import "../components/walletButtons.scss";
+
+.stakingSection {
+  width: 100%;
+  height: 80vh;
+  padding: 3rem 3rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  &.dark {
+    @include BG-dark;
+  }
+
+  & div {
+    width: 60%;
+    & h2 {
+      color: $secondaryColDark;
+    }
+    & .stkaingForm {
+      width: 100%;
+      & div {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        & label span {
+          font-size: 1.2rem;
+          color: $scondaryCol;
+          font-weight: bold;
+        }
+        & input {
+          padding: 0.5rem 0.4rem;
+          border-radius: 0.5rem;
+          border: 1px solid $secondaryColDark;
+          outline: none;
+        }
+      }
+      & button {
+        @include walletButton;
+        margin-top: 4rem;
+      }
+    }
+  }
+  & .stakingActivity {
+    background-color: $secondaryWhite;
+    align-self: flex-start;
+    height: 80%;
+    border-radius: 0.5rem;
+    padding: 3rem 2rem;
+    font-weight: bold;
+    color: $thirdCol;
+    overflow: hidden;
+    & .details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-weight: bold;
+      color: $scondaryCol;
+    }
+    & .noFunds {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    & .stakingActivityLoading {
+      width: 100%;
+      height: 100%;
+      color: $thirdCol;
+      background-color: $secondaryWhite;
+    }
+  }
+}

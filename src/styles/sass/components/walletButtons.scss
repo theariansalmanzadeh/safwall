@@ -1,0 +1,16 @@
+@import "../utils/Variables.scss";
+@import "./SubmitButton.module.scss";
+
+@mixin walletButton {
+  align-self: flex-start;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 0.4rem 1.2rem;
+  font-size: 1.2rem;
+  @include submitBtn;
+  background-color: $successfull;
+  color: $primaryCol;
+  &:hover {
+    color: $primaryWhite;
+  }
+}

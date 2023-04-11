@@ -1,0 +1,16 @@
+@import "../utils/Variables.scss";
+
+.loader {
+  font-size: 3rem;
+  color: $scondaryCol;
+  animation: spinning 1.4s infinite linear;
+}
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

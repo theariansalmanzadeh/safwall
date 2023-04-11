@@ -1,0 +1,40 @@
+@import "../utils/Variables.scss";
+
+.errorMessage {
+  width: 24vw;
+  height: 10vh;
+  background-color: $secondaryWhite;
+  border: 1px solid $warning;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+  transform: translateY(2rem);
+  right: 5rem;
+}
+
+.errorMessage.active {
+  animation: displaying 4s linear alternate-reverse forwards;
+}
+
+@keyframes displaying {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  5% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}

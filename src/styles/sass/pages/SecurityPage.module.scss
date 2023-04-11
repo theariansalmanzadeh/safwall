@@ -1,0 +1,102 @@
+@import "../utils/Variables.scss";
+@import "../components/SubmitButton.module.scss";
+
+.securityPage {
+  height: 100vh;
+  &.securityPageDark {
+    background-color: $SecondaryDark;
+    color: $primaryWhite;
+    & h3 {
+      color: $primaryWhite;
+    }
+  }
+  & h3 {
+    text-align: center;
+    color: $scondaryCol;
+    font-size: 1.6rem;
+    margin-top: 0;
+    padding-top: 2rem;
+  }
+  & form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & div {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      & input {
+        padding: 0.4rem 0.2rem;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+      & button {
+        @include submitBtn;
+        align-self: flex-end;
+        font-size: 1.2rem;
+        padding: 0.4rem 0.8rem;
+      }
+      & .retrieve {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.password {
+  margin-top: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & input {
+    width: 40%;
+    padding: 0.5rem 0.2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  & button {
+    @include submitBtn;
+    font-size: 1.2rem;
+  }
+}
+.passwordDetails {
+  width: 22%;
+  position: absolute;
+  top: 52%;
+  color: $scondaryCol;
+  left: 2rem;
+  font-size: 1.2rem;
+  & .icon {
+    margin-right: 0.3rem;
+    color: $primaryCol;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & p {
+    margin: 0;
+    color: $scondaryCol;
+    font-size: 1.2rem;
+  }
+  & .logo {
+    animation: fadeIn 1s linear infinite;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    stroke-dashoffset: 100%;
+  }
+}
+@keyframes filling {
+  to {
+    fill: $scondaryCol;
+  }
+}

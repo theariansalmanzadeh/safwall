@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.Web3Provider {
+  box-sizing: border-box;
+}

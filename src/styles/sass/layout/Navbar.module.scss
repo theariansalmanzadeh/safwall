@@ -1,0 +1,113 @@
+@import "../utils/variables.scss";
+.NavBar {
+  box-sizing: border-box;
+  padding: 0rem 1rem 0rem 1rem;
+  padding: 0 auto;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $thirdCol;
+
+  &.NavBarDark {
+    background-color: $primaryCol;
+    & ul li a {
+      color: $primaryWhite;
+    }
+    & ul li a:hover {
+      color: $secondaryWhite;
+    }
+  }
+  & .hamburgerMenu {
+    display: none;
+    @media screen and (max-width: 760px) {
+      display: block;
+    }
+  }
+  & ul {
+    width: 50%;
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    gap: 1rem;
+    & .closeBtnMenu {
+      display: none;
+    }
+
+    @media screen and (max-width: 760px) {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      background-color: $primaryCol;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding-left: 0rem;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      transition: all 0.2s linear;
+      &.active {
+        transform: translateX(0);
+        transition: all 0.2s linear;
+      }
+      & .closeBtnMenu {
+        display: block;
+        background-color: transparent;
+        font-size: 2rem;
+        border: 0;
+        color: $primaryWhite;
+        align-self: flex-end;
+        padding: 1rem 1rem 0rem 0rem;
+      }
+      & li {
+        width: 100%;
+        padding: 1rem 0rem;
+        border-bottom: 1px solid $scondaryCol;
+        & a {
+          color: $primaryWhite;
+        }
+      }
+    }
+    & li a {
+      font-size: 1.2rem;
+      text-decoration: none;
+
+      color: $scondaryCol;
+      &:hover {
+        color: $primaryCol;
+      }
+    }
+  }
+  & .interaction {
+    display: flex;
+  }
+  & .light {
+    width: 2rem;
+    overflow: hidden;
+    align-self: center;
+    margin-right: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    & .sun {
+      background-color: transparent;
+      padding: 0.5rem;
+      transition: all 0.5s linear;
+    }
+    & .sun.Active {
+      transform: translateX(-2rem);
+    }
+    & .moon {
+      background-color: transparent;
+      padding: 0.5rem;
+      transition: all 0.5s linear;
+      color: $primaryWhite;
+    }
+    & .moon.Active {
+      transform: translateX(-2rem);
+    }
+  }
+}

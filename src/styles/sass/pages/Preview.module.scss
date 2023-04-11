@@ -1,0 +1,27 @@
+@import "../utils/Variables.scss";
+@import "../layout/background.module.scss";
+@import "../components/SubmitButton.module.scss";
+
+.previewSection {
+  padding: 2rem;
+  &.dark {
+    @include BG-dark;
+  }
+  & p {
+    margin: 1rem 0rem 0rem 0rem;
+  }
+  & p,
+  h3 {
+    color: $scondaryCol;
+  }
+  & .btnWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    & button {
+      @include submitBtn;
+      margin: 5rem;
+      padding: 0.4rem 1.8rem;
+    }
+  }
+}

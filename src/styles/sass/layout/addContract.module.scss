@@ -1,0 +1,95 @@
+@import "../utils/Variables.scss";
+@import "../components/SubmitButton.module.scss";
+
+.AddContract {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 30%;
+  height: 60%;
+  background-color: white;
+  border-radius: 1rem;
+  & form {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    & input {
+      width: 70%;
+      font-size: 1.2rem;
+      padding: 0.5rem 0.4rem;
+      border-radius: 0.8rem;
+      border: 1px solid $scondaryCol;
+    }
+    & button {
+      @include submitBtn;
+      font-size: 1rem;
+      padding: 0.2rem 0.8rem;
+    }
+    & .sendBtn {
+      margin-top: 1rem;
+      width: 60%;
+      padding: 0.5rem 2rem;
+    }
+    & .error {
+      color: $warning;
+    }
+  }
+
+  & .closeModal {
+    display: flex;
+    justify-content: flex-end;
+    & button {
+      background-color: transparent;
+      margin: 1rem 1.4rem 0 0;
+      padding: 0.5rem 0.8rem;
+      font-size: 1.4rem;
+      border-radius: 0.6rem;
+      border: 2px solid $scondaryCol;
+      cursor: pointer;
+      &:hover {
+        background-color: $primaryCol;
+        color: $primaryWhite;
+      }
+    }
+  }
+  & .loadingWrapper ul {
+    margin-top: 0.5rem;
+    display: flex;
+
+    font-size: 1.5rem;
+    color: $scondaryCol;
+    justify-content: flex-start;
+    & li {
+      animation: loadingAnime 2s ease-in-out infinite;
+      &:nth-of-type(2) {
+        animation-delay: 0.5s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: 1s;
+      }
+      &:nth-of-type(4) {
+        animation-delay: 1.5s;
+      }
+    }
+  }
+  & a {
+    margin: 2rem auto 0rem auto;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@keyframes loadingAnime {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(35rem);
+  }
+}

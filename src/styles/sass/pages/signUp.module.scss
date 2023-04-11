@@ -1,0 +1,32 @@
+@import "../layout/background.module.scss";
+@import "../components/SubmitButton.module.scss";
+@import "../components/input.module.scss";
+
+.signUp {
+  height: 90vh;
+  padding-top: 5rem;
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 50%;
+    margin: 0 auto;
+    & label {
+      margin-top: 1rem;
+    }
+    & .input {
+      @include input;
+      &.error {
+        border: 1px solid $warning;
+      }
+    }
+    & button {
+      @include submitBtn;
+      padding: 0.3rem 0;
+      font-size: 1rem;
+    }
+  }
+  &.Dark {
+    @include BG-dark;
+  }
+}

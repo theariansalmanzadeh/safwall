@@ -1,0 +1,64 @@
+@import "../utils/Variables.scss";
+
+.assets {
+  height: 27vh;
+  // border: 1px solid red;
+  background-color: transparent;
+
+  overflow: hidden;
+  & .listTokens {
+    height: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    background-color: $thirdColDark;
+    border-radius: 0.5rem;
+    list-style: none;
+    transform: translateY(-100%);
+    overflow-y: scroll;
+    transition: all 0.5s linear;
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+    &::-webkit-scrollbar-track {
+      color: $primaryCol;
+    }
+    &.show {
+      transform: translateY(0%);
+    }
+
+    & li {
+      padding: 0.5rem 0rem;
+      font-size: 1.2rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      // border-bottom: 1px solid ;
+      & span:nth-child(2) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 5rem;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      &:first-child {
+        color: $primaryCol;
+      }
+    }
+  }
+}
+
+.showBtn {
+  margin: 0.5rem 0rem;
+  background-color: #6fbcf0;
+  color: $primaryWhite;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
+  &:hover {
+    background-color: $thirdCol;
+  }
+}

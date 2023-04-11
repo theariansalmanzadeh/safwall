@@ -1,0 +1,15 @@
+@import "../utils/Variables.scss";
+
+.nav-tabs {
+  margin-bottom: 0 !important;
+  padding-bottom: 2rem;
+  &.dark {
+    background-color: $SecondaryDark;
+  }
+
+  & .nav-item .nav-link.active {
+    background-color: $scondaryCol;
+    color: $primaryWhite;
+    border-radius: 0;
+  }
+}

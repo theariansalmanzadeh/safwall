@@ -1,0 +1,8 @@
+@import "../utils/Variables.scss";
+
+$nav-tabs-link-active-bg: red;
+.nav-tabs .nav-item .nav-link {
+  background-color: red;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

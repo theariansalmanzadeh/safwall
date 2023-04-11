@@ -1,0 +1,218 @@
+@import "../utils/Variables.scss";
+@import "../components/SubmitButton.module.scss";
+
+.wallet {
+  width: 100%;
+  height: 90vh;
+  box-sizing: border-box;
+  display: flex;
+  padding-top: 3rem;
+  justify-content: space-around;
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    height: 150vh;
+    padding-top: 1rem;
+  }
+
+  &.walletDark {
+    background-color: $SecondaryDark;
+    color: $primaryWhite;
+    & .rightSection {
+      background-color: $SecondaryDark;
+    }
+    & .links a {
+      color: $thirdCol;
+      &:hover {
+        color: $scondaryCol;
+      }
+    }
+  }
+
+  & .txBtn {
+    @include submitBtn;
+    background-color: $successfull;
+    color: $primaryCol;
+
+    padding: 0.4rem 2rem;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    &:hover {
+      color: $primaryWhite;
+    }
+  }
+  & .leftSection {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items: center;
+    @media screen and (max-width: 760px) {
+      width: 90%;
+      margin: 0 auto;
+    }
+    & .TxBtn {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      & .btn {
+        align-self: flex-start;
+        border-radius: 1rem;
+        cursor: pointer;
+        padding: 0.4rem 1.2rem;
+        font-size: 1.2rem;
+        @include submitBtn;
+        background-color: $successfull;
+        color: $primaryCol;
+        &:hover {
+          color: $primaryWhite;
+        }
+      }
+    }
+  }
+  & .Txinfo {
+    padding: 0 0.5rem;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    color: $primaryCol;
+    @media screen and (max-width: 760px) {
+      overflow: scroll;
+    }
+    & .loadingActivities {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: $scondaryCol;
+      font-size: 1.5rem;
+      animation: spinner 1s infinite linear;
+    }
+    & a {
+      display: inline-block;
+      width: 100%;
+      text-decoration: none !important;
+      border-bottom: 1px solid $primaryCol !important;
+    }
+    & div {
+      width: 100%;
+      margin-top: 0.5rem;
+      height: 25%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      & p {
+        font-size: 1rem;
+        border-bottom: 0;
+
+        color: $primaryCol;
+        margin: 0;
+        & span {
+          color: $scondaryCol;
+          font-size: 1rem;
+          &:hover {
+            color: $primaryCol;
+          }
+        }
+      }
+    }
+  }
+  & .activities {
+    width: 100%;
+    background-color: red;
+    height: 80%;
+    border-radius: 1rem;
+    background-color: $secondaryWhite;
+    overflow: hidden;
+    @media screen and (max-width: 760px) {
+      height: 60vh;
+    }
+
+    & p {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 0rem;
+      border-bottom: 2px solid $primaryCol;
+      color: $primaryCol;
+    }
+  }
+  & .rightSection {
+    flex-basis: 40%;
+    border-radius: 0.5rem;
+    align-self: flex-start;
+    @media screen and (max-width: 760px) {
+      padding: 0 1rem;
+    }
+    & p {
+      padding: 0.5rem 0rem;
+    }
+    & .links {
+      display: flex;
+      flex-direction: column;
+      & a {
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+    }
+
+    & .AddToken {
+      background-color: transparent;
+      border: none;
+      color: $scondaryCol;
+      text-decoration: underline;
+      text-align: left;
+    }
+    & .assetWrapper {
+      width: 100%;
+      padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      & .etherLogo {
+        display: inline-block;
+        width: 5rem;
+      }
+      & .ethNum {
+        font-size: 2rem;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// .donut-ring {
+//   stroke: $scondaryCol;
+//   animation: filling 1s ease-in-out forwards;
+//   transform-origin: 50% 50%;
+//   transform: rotate(-90deg);
+// }
+
+// .donut {
+//   position: relative;
+// }
+
+.loader {
+  color: $scondaryCol;
+  top: 20%;
+  right: 50%;
+  font-size: 2.4rem;
+  animation: spinner 1s linear infinite;
+  position: absolute;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes filling {
+  to {
+    stroke-dashoffset: 50%;
+  }
+}

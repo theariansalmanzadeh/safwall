@@ -1,0 +1,193 @@
+@import "../utils/Variables.scss";
+@import "../layout/background.module.scss";
+
+.swapSection {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &.dark {
+    @include BG-dark;
+  }
+  & .contributor {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    transform: translateX(-50%);
+    color: $scondaryCol;
+    & img {
+      width: 3rem;
+    }
+  }
+
+  & .swapWrapper {
+    background-color: $primaryCol;
+    width: 40%;
+    // height: 35vh;
+    border-radius: 1rem;
+    box-shadow: 1rem 0rem 1rem rgba(0, 0, 0, 0.3),
+      -1rem 0rem 1rem rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    @media screen and (max-width: 760px) {
+      width: 90%;
+    }
+    & p {
+      margin: 0;
+      color: $primaryWhite;
+      font-size: 1.2rem;
+      // font-weight: bold;
+    }
+    & .inputToken {
+      width: 100%;
+      position: relative;
+      & label {
+        color: $thirdDark;
+        position: absolute;
+        top: 45%;
+        right: 5%;
+        & img {
+          width: 2rem;
+        }
+      }
+
+      & .selectToken {
+        position: absolute;
+        top: 30%;
+        background-color: $scondaryCol;
+        color: $primaryWhite;
+        font-weight: bold;
+        right: 5%;
+        border: none;
+        border-radius: 1rem;
+        padding: 0.5rem;
+      }
+      & .selectedToken {
+        position: absolute;
+        top: 30%;
+        right: 3%;
+        display: flex;
+        border: none;
+        border-radius: 1rem;
+        padding: 0.3rem 0.4rem;
+        background-color: $thirdColLight;
+        box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+        & p {
+          color: $primaryCol;
+        }
+        & img {
+          width: 2rem;
+          margin-right: 0.5rem;
+        }
+      }
+      & input {
+        background-color: $thirdCol;
+        width: 100%;
+        font-weight: bold;
+        color: $thirdDark;
+        font-size: 1.2rem;
+        padding: 0.8rem;
+        border-radius: 1rem;
+        border: none;
+        outline: none;
+
+        &:last-child {
+          margin-top: 1rem;
+        }
+      }
+    }
+    & .fetchingData {
+      position: relative;
+      padding-top: 0.5rem;
+      & .loader {
+        animation: spinning 1s infinite ease-in-out;
+        position: absolute;
+        top: 50%;
+        color: $scondaryCol;
+        left: 1rem;
+      }
+    }
+    & .swapBtn {
+      width: 100%;
+      display: inline-block;
+      border: none;
+      border-radius: 1rem;
+      text-align: center;
+      padding: 0.4rem 0;
+      background-color: $thirdCol;
+      color: $scondaryCol;
+      margin: 2rem 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      &:hover {
+        background-color: $thirdColDark;
+        color: $thirdDark;
+      }
+    }
+  }
+  & .swapLoading {
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .loadingWrapper {
+      width: 20%;
+      height: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      overflow: hidden;
+
+      & > div {
+        width: 100%;
+        height: 0.2rem;
+        border-radius: 0.6rem;
+        background-color: blue;
+        &:first-child {
+          transform: translateX(100%);
+          animation: swapLoadingFirst 1s infinite ease-in-out alternate-reverse;
+        }
+        &:last-child {
+          transform: translateX(-100%);
+          animation: swapLoadingSecond 1s infinite ease-in-out alternate-reverse;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spinning {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes swapLoadingFirst {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes swapLoadingSecond {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

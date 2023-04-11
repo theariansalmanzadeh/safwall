@@ -1,0 +1,26 @@
+@import "../utils/Variables.scss";
+
+.howToPage {
+  padding: 0.5rem 2rem;
+  @media screen and (max-width: 760px) {
+    padding: 0.5rem 0;
+  }
+  & h3 {
+    margin-bottom: 1.4rem;
+    color: $scondaryCol;
+  }
+  & ol li {
+    // display: inline-block;
+    padding: 0.5rem 0rem;
+  }
+  & h4 {
+    color: $scondaryCol;
+  }
+  & .additionalInfo span {
+    font-weight: bold;
+    color: $thirdColDark;
+  }
+  & .contractAddress {
+    color: $thirdColDark;
+  }
+}

@@ -1,0 +1,21 @@
+@mixin backgrounLarge {
+  width: 18vw;
+  height: 18vw;
+  opacity: 0.4;
+  background-size: cover;
+  background-position: center;
+}
+@mixin backgrounMedium {
+  width: 15vw;
+  height: 15vw;
+  opacity: 0.4;
+  background-size: cover;
+  background-position: center;
+}
+@mixin backgrounSmall {
+  width: 10vw;
+  height: 10vw;
+  opacity: 0.4;
+  background-size: cover;
+  background-position: center;
+}

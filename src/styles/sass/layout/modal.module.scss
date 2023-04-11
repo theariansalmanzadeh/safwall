@@ -1,0 +1,123 @@
+@import "../utils/Variables.scss";
+@import "../components/SubmitButton.module.scss";
+
+.sendEth {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  border-radius: 1rem;
+  @media screen and (max-width: 760px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+  & form {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    & input {
+      width: 70%;
+      font-size: 1.2rem;
+      padding: 0.5rem 0.4rem;
+      border-radius: 0.8rem;
+      border: 1px solid $scondaryCol;
+      @media screen and (max-width: 760px) {
+        width: 90%;
+      }
+    }
+    & button {
+      @include submitBtn;
+      font-size: 1rem;
+      padding: 0.2rem 0.8rem;
+      @media screen and (max-width: 760px) {
+        width: 90%;
+      }
+    }
+    & .sendBtn {
+      // margin-top: 1rem;
+      width: 60%;
+      padding: 0.5rem 2rem;
+      @media screen and (max-width: 760px) {
+        width: 90%;
+      }
+    }
+    & .error {
+      color: $warning;
+    }
+  }
+
+  & .closeModal {
+    display: flex;
+    justify-content: flex-end;
+    & button {
+      background-color: transparent;
+      margin: 1rem 1.4rem 0 0;
+      padding: 0.5rem 0.8rem;
+      font-size: 1.4rem;
+      border-radius: 0.6rem;
+      border: 2px solid $scondaryCol;
+      cursor: pointer;
+      &:hover {
+        background-color: $primaryCol;
+        color: $primaryWhite;
+      }
+    }
+  }
+  & .loadingWrapper ul {
+    margin-top: 0.5rem;
+    display: flex;
+    // gap: 1rem;
+    font-size: 1.5rem;
+    color: $scondaryCol;
+    justify-content: flex-start;
+    & li {
+      animation: loadingAnime 2s ease-in-out infinite;
+      &:nth-of-type(2) {
+        animation-delay: 0.5s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: 1s;
+      }
+      &:nth-of-type(4) {
+        animation-delay: 1.5s;
+      }
+    }
+  }
+}
+
+.txInfoWrapper {
+  width: 40%;
+  height: 20vh;
+  position: absolute;
+  border-radius: 1rem;
+  box-shadow: 0rem 1rem 1rem rgba(0, 0, 0, 0.3);
+  bottom: 10%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0rem 1rem;
+  overflow: hidden;
+  & p span {
+    font-size: 0.8rem;
+  }
+}
+
+@keyframes loadingAnime {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(35rem);
+  }
+}
