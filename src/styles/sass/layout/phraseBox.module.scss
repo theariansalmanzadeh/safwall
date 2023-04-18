@@ -92,12 +92,15 @@
 .submitBtn {
   font-size: 1.2rem;
   margin-top: 1rem;
-  padding: 0.3rem 0.8rem;
-  background-color: $scondaryCol;
+  padding: 0.3rem 1.2rem;
+  background-color: $thirdColDark;
   border-radius: 0.5rem;
-  border: 3px solid $scondaryCol;
-  color: $primaryWhite;
+  border: 3px solid $thirdColDark;
+  color: $primaryCol;
   cursor: pointer;
+  &:hover {
+    border: 3px solid $scondaryCol;
+  }
   @media screen and (max-width: 760px) {
     width: 100%;
   }
@@ -113,7 +116,12 @@
   border: 3px solid $scondaryCol;
   color: $primaryWhite;
   cursor: pointer;
+  &:hover,
+  &:focus {
+    border: 3px solid $successfull;
+  }
   @media screen and (max-width: 760px) {
     width: 100%;
+    margin-left: 0rem;
   }
 }

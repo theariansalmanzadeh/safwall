@@ -37,7 +37,11 @@ function SendEth({ onClose }) {
     const value = ethers.utils.parseEther(valueInputRef.current.value);
 
     const maxGas = await provider.getFeeData();
-    const estimatedGas = await provider.getGasPrice();
+
+    console.log(
+      Number(maxGas.maxFeePerGas * 21000),
+      addressInputRef.current.value
+    );
 
     const tx = {
       to: addressInputRef.current.value,
@@ -46,9 +50,6 @@ function SendEth({ onClose }) {
       gasLimit: 21000,
       gasPrice: maxGas.maxFeePerGas,
     };
-    console.log(addressInputRef.current.value);
-
-    console.log(Number(maxGas.maxFeePerGas), Number(estimatedGas));
 
     try {
       const txRes = await userWallet.sendTransaction(tx);
@@ -60,25 +61,23 @@ function SendEth({ onClose }) {
       togglePageRefresh(true);
       onClose();
     } catch (e) {
+      console.log(e);
       setSendLoading(false);
     }
   };
 
   const setMaxHandler = async () => {
-    console.log(userWallet.address);
-
-    const res = await provider.estimateGas({
-      to: userWallet.address,
-
-      value: ethers.utils.parseEther(balance),
-      nonce: nonce,
-    });
     const gasPrice = await await provider.getFeeData();
 
-    const totalGas = gasPrice.maxFeePerGas * res;
-    console.log(ethers.utils.formatEther(totalGas));
+    const totalGas = gasPrice.maxFeePerGas * 210000 * 1.5;
 
-    valueInputRef.current.value = balance - ethers.utils.formatEther(totalGas);
+    console.log(Number(ethers.utils.parseEther(balance)), totalGas);
+    const valueHex = Number(ethers.utils.parseEther(balance)) - totalGas;
+
+    const value = Number(ethers.utils.formatEther(String(valueHex))).toFixed(4);
+    console.log(String(value));
+
+    valueInputRef.current.value = String(value);
   };
 
   const changeValueHandler = () => {

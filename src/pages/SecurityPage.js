@@ -81,7 +81,7 @@ function SecurityPage() {
     const url = window.URL || window.webkitURL;
     const link = url.createObjectURL(blob1);
     const a = document.createElement("a");
-    a.download = "Customers.txt";
+    a.download = "safwall.txt";
     a.href = link;
     document.body.appendChild(a);
     a.click();

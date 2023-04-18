@@ -30,13 +30,12 @@ function AccountProvider({ children }) {
     const res = await fetch(url);
     const Txhis = await res.json();
 
+    console.log(Txhis);
     setTxHistory(Txhis);
   };
 
   const togglePageRefresh = (state) => {
-    console.log(state);
     setUpdatePage(state);
-    console.log(updatePage);
   };
 
   const getEthPrice = async () => {
@@ -53,7 +52,7 @@ function AccountProvider({ children }) {
     const data = await findAPI(wallet.address, userId);
 
     setTokenDetials([]);
-    if (data?.token) {
+    if (data?.tokens) {
       data.tokens.map((token) =>
         addContractAddress(token.address, token.symbol, wallet)
       );

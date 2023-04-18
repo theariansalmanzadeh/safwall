@@ -86,16 +86,16 @@ function Mywallet() {
       setLoading(true);
       await getBalanceAccount(provider, userWallet);
       await getNonceAccount(provider, userWallet);
+      await fetchFavoriteTokens(userWallet.connect(provider), userObjectId);
+
       await getEthPrice();
       await getTxHistory(userWallet.address);
 
       connectWalletProvider();
-      console.log("ok");
+
       const contractSigner = mainContracts.connect(userWallet);
 
       setStakingContract(contractSigner);
-
-      fetchFavoriteTokens(userWallet.connect(provider), userObjectId);
 
       setLoading(false);
       togglePageRefresh(false);
@@ -116,7 +116,7 @@ function Mywallet() {
       let newBalance = await provider.getBalance(userWallet.address);
       newBalance = ethers.utils.formatEther(newBalance);
       newBalance = String(Number(newBalance).toFixed(3));
-      console.log(newBalance, prveBalance);
+
       togglePageRefresh(newBalance === prveBalance ? false : true);
     }, 1000 * 10);
 
