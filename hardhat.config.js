@@ -1,5 +1,6 @@
 /** @type import('hardhat/config').HardhatUserConfig */
 
+require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-ethers");
 require("ethers");
 
@@ -22,8 +23,11 @@ module.exports = {
     goerli: {
       url: "https://goerli.infura.io/v3/3a252697a2194109b8fa47e46e439ac0",
       accounts: [
-        "12ba658b8d2308e6aa03e620f4fda1d4528c07dff131978cd42518ab4994b5eb",
+        "fda44b2dcb982f2d04ca002688bd23617dc3235c872b96f5d07d4ee70c5912c5",
       ],
     },
+  },
+  etherscan: {
+    apiKey: "65HPY3B4FJ7KUQRUK3U8Z5Y9B41ESG41XJ",
   },
 };

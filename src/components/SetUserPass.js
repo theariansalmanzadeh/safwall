@@ -36,23 +36,22 @@ function SetUserPass() {
 
     const wallet = userWallet.address;
     const pass = password;
-    const res = await createUserPassword(wallet, pass);
-    console.log(res);
-    if (!res.objectId) {
-      return;
+
+    try {
+      const res = await createUserPassword(wallet, pass);
+      console.log(res);
+      if (!res.objectId) {
+        return;
+      }
+      setLogInPass(pass);
+
+      localStorage.setItem("safWallAddress", userWallet.address);
+      authenticate();
+      navigate("/walletPreview");
+    } catch (e) {
+      setError(false);
+      setLoading(false);
     }
-    setLogInPass(pass);
-    const walletCreator = new ethers.Wallet(
-      "0x12ba658b8d2308e6aa03e620f4fda1d4528c07dff131978cd42518ab4994b5eb",
-      providerContract
-    );
-    localStorage.setItem("safWallAddress", userWallet.address);
-    const signerContract = mainContracts.connect(walletCreator);
-    console.log(signerContract);
-    const resContract = await signerContract.makeEligible(userWallet.address);
-    console.log(resContract);
-    authenticate();
-    navigate("/walletPreview");
   };
 
   const classes = backgroundMode(styles.signUp, styles.Dark, lightMode);
@@ -75,7 +74,7 @@ function SetUserPass() {
         />
         <button type="submit">countinue</button>
       </form>
-      {loading && <AiOutlineLoading />}
+      {loading && <AiOutlineLoading className={styles.loading} />}
     </div>
   );
 }

@@ -200,3 +200,5 @@ export const TxHistoryDisplay = (TxHistory) => {
   if (TxHistory.result.length > 0) return TxHistory.result;
   else return 0;
 };
+
+export const checkToRefresh = async (balance, provider, address) => {};

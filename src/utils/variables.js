@@ -240,7 +240,7 @@ export const tokenSwap = [
 ];
 
 export const defaultToken = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
-export const contractAddress = "0x87e6055f50A6F9f25c00D135c139E6C02cDfb1f3";
+export const contractAddress = "0x47b2F525C880dD8227C63FFDc1bF2CF61d2C8921";
 export const UNISWAP_FACTORY_ADDRESS =
   "0x1F98431c8aD98523631AE4a59f267346ea31F984";
 export const UNISWAP_ROUTER_ADDRESS =

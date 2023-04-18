@@ -36,6 +36,11 @@ function CreatePage() {
     navigate("/securitycheck");
   };
 
+  const copyPhraseHandler = () => {
+    console.log(mnemonics.join(" "));
+    navigator.clipboard.writeText(mnemonics.join(" "));
+  };
+
   const classes = backgroundMode(
     styles.createPage,
     styles.createPageDark,
@@ -89,6 +94,9 @@ function CreatePage() {
           </div>
           <button onClick={phaseHandler} className={styles.submitBtn}>
             Got it{" "}
+          </button>
+          <button onClick={copyPhraseHandler} className={styles.copyBtn}>
+            Copy
           </button>
         </div>
       </div>

@@ -58,9 +58,27 @@ function SendEth({ onClose }) {
       await txRes.wait();
       setSendLoading(false);
       togglePageRefresh(true);
+      onClose();
     } catch (e) {
       setSendLoading(false);
     }
+  };
+
+  const setMaxHandler = async () => {
+    console.log(userWallet.address);
+
+    const res = await provider.estimateGas({
+      to: userWallet.address,
+
+      value: ethers.utils.parseEther(balance),
+      nonce: nonce,
+    });
+    const gasPrice = await await provider.getFeeData();
+
+    const totalGas = gasPrice.maxFeePerGas * res;
+    console.log(ethers.utils.formatEther(totalGas));
+
+    valueInputRef.current.value = balance - ethers.utils.formatEther(totalGas);
   };
 
   const changeValueHandler = () => {
@@ -87,8 +105,10 @@ function SendEth({ onClose }) {
         value: ethers.utils.parseEther(value),
         nonce: nonce,
       });
-      const gasPrice = await provider.getGasPrice();
-      setGas(ethers.utils.formatEther(gasPrice));
+      const gasPrice = await provider.getFeeData();
+
+      const estimatedPrice = res * gasPrice.maxFeePerGas;
+      setGas(ethers.utils.formatEther(estimatedPrice));
 
       getBalanceAccount(provider, userWallet);
       getNonceAccount(provider, userWallet);
@@ -126,7 +146,7 @@ function SendEth({ onClose }) {
           <button
             type="button"
             onClick={() => {
-              valueInputRef.current.value = balance;
+              setMaxHandler();
             }}
           >
             Max

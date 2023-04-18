@@ -26,6 +26,11 @@
       flex-direction: column;
       width: 70%;
       & input {
+        // width: 50%;
+        width: 100%;
+        align-self: center;
+        // height: 5rem;
+        // white-space: pre;
         padding: 0.4rem 0.2rem;
         border-radius: 0.5rem;
         margin-bottom: 2rem;

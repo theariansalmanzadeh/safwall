@@ -1,9 +1,14 @@
 import React from "react";
 import styles from "../styles/sass/pages/howToUse.module.scss";
+import { useWeb3Ctx } from "../components/Web3Provider";
+import { backgroundMode } from "../utils/helper";
 
 function HowToUse() {
+  const { lightMode } = useWeb3Ctx();
+
+  const classes = backgroundMode(styles.howToPage, styles.dark, lightMode);
   return (
-    <div className={styles.howToPage}>
+    <div className={classes}>
       <h3>How to create wallet</h3>
       <ol>
         <li>
@@ -28,7 +33,7 @@ function HowToUse() {
         with the wallet's token(SFTK) you can find the contract infonrmation and
         details at{" "}
         <span className={styles.contractAddress}>
-          0x87e6055f50A6F9f25c00D135c139E6C02cDfb1f3
+          0x47b2F525C880dD8227C63FFDc1bF2CF61d2C8921
         </span>
       </p>
       <p className={styles.additionalInfo}>

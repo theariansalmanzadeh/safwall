@@ -41,10 +41,11 @@ describe("Token Contract", function () {
     const [account1, account2, account3] = await ethers.getSigners();
 
     // console.log(account2.address);
+    const time = 10 * 24 * 60 * 60;
 
     await contract
       .connect(account3)
-      .stakingETH(10, { value: ethers.utils.parseEther("2") });
+      .stakingETH(time, { value: ethers.utils.parseEther("2") });
 
     const stakedDetsils = await contract.getTotalUserStaked();
     const balance = await contract.contractBalance();

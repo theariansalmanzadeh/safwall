@@ -17,6 +17,19 @@
   &.walletDark {
     background-color: $SecondaryDark;
     color: $primaryWhite;
+    & .activities {
+      background-color: $primaryCol;
+      p {
+        color: $primaryWhite;
+        border-bottom: 2px solid $primaryWhite;
+      }
+      & .Txinfo {
+        color: $primaryWhite;
+        & a {
+          border-bottom: 1px solid $primaryWhite !important;
+        }
+      }
+    }
     & .rightSection {
       background-color: $SecondaryDark;
     }
@@ -126,6 +139,7 @@
     border-radius: 1rem;
     background-color: $secondaryWhite;
     overflow: hidden;
+    overflow-y: scroll;
     @media screen and (max-width: 760px) {
       height: 60vh;
     }

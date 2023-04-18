@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\blockchain projects\\saf-wal\\safwall\\contracts\\safWall.sol": {
-      "lastModificationDate": 1679092238321,
-      "contentHash": "78ff8481f38200aa2568437fb188d57f",
+      "lastModificationDate": 1681772358898,
+      "contentHash": "51c713109e49911de1892b4844ab5e40",
       "sourceName": "contracts/safWall.sol",
       "solcConfig": {
         "version": "0.8.17",

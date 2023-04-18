@@ -115,7 +115,7 @@ contract safWall is ERC20{
 
     uint timeStamp = time;
 
-    require(eligibleAddress[msg.sender] == true, "your eligible no need for procedure");
+    // require(eligibleAddress[msg.sender] == true, "your eligible no need for procedure");
     require(addressStakeStatus[msg.sender] == false , "your are still Staking");
     require(msg.value >= 1 ether, "not sufficient fund");
     require(timeStamp >= 7 days,"staking period  is too short");

@@ -60,7 +60,7 @@ function Navbar() {
               }}
               to="/wallet"
             >
-              my Wallet
+              My Wallet
             </NavLink>
           </li>
           <li>

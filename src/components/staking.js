@@ -11,11 +11,6 @@ function Staking() {
   const { lightMode, userWallet, provider, providerContract, mainContracts } =
     useWeb3Ctx();
 
-  const privateKey0 =
-    "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
-  const privateKey1 =
-    "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d";
-
   const [isStaking, setIsStaking] = useState(false);
   const [isLoading, setIsloading] = useState(true);
   const [stakingDetial, setStakingDetial] = useState({
@@ -49,16 +44,6 @@ function Staking() {
         Number(amount).toFixed(3).toString()
       );
 
-      // const [account1, account2] = await providerContract.listAccounts();
-
-      // const wallet = new ethers.Wallet(privateKey0, providerContract);
-      // const wallet2 = new ethers.Wallet(privateKey1, providerContract);
-
-      // await mainContracts.connect(wallet).makeEligible(account2);
-
-      // const data = await mainContracts.connect(wallet2).gettotalEligbles();
-      // console.log(data);
-
       const res = await signerContract.stakingETH(parseInt(time) * 24 * 3600, {
         value: amountWei,
       });
@@ -78,10 +63,8 @@ function Staking() {
     (async () => {
       setIsloading(true);
       try {
-        const wallet2 = new ethers.Wallet(privateKey1, providerContract);
         console.log(providerContract);
         const signerContract = mainContracts.connect(userWallet);
-        // const signerContractUser = mainContracts.connect(wallet2);
         setSignerContract(signerContract);
         const res = await signerContract.getUserStakedDetails({
           from: userWallet.address,

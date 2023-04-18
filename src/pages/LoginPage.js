@@ -28,24 +28,31 @@ function LoginPage() {
     if (password.lenght === 0) return;
 
     setLoading(true);
-    const wallet = await logIn(walletAddress, password);
-    if (wallet === null) {
-      setError(true);
-      return;
-    }
-    const walletData = await getUserWalletInfo(walletAddress);
-    setUserObjectId(walletData.objectId);
-    console.log(wallet, walletData);
-    setLoading(false);
+    try {
+      const wallet = await logIn(walletAddress, password);
+      if (wallet === null) {
+        setError(true);
+        setLoading(false);
+        return;
+      }
 
-    if (wallet === null || walletData === null) {
-      setError(true);
-    } else {
-      const wallet = ethers.Wallet.fromMnemonic(walletData.wallet.mnemonics);
-      setUserWallet(wallet);
+      const walletData = await getUserWalletInfo(walletAddress);
+      setUserObjectId(walletData.objectId);
+      console.log(wallet, walletData);
       setLoading(false);
-      authenticate();
-      naivgate("/wallet");
+
+      if (wallet === null || walletData === null) {
+        setError(true);
+      } else {
+        const wallet = ethers.Wallet.fromMnemonic(walletData.wallet.mnemonics);
+        setUserWallet(wallet);
+        setLoading(false);
+        authenticate();
+        naivgate("/wallet");
+      }
+    } catch (e) {
+      console.log("ok");
+      setLoading(false);
     }
   };
 
@@ -60,7 +67,7 @@ function LoginPage() {
   return (
     <div className={classes}>
       <Link className={styles.importwallet} to="/importwallet">
-        import wallet with phases?
+        import wallet with phrases?
       </Link>
       <form onSubmit={submitHandler} className={styles.formSection}>
         <input type="text" ref={addressRef} placeholder="Address" />

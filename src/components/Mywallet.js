@@ -8,6 +8,9 @@ import { useWeb3Ctx } from "./Web3Provider";
 import SendModal from "./layout/SendModal";
 import AddContractsModal from "./layout/AddContractsModal";
 import AssetsSection from "./AssetsSection.js";
+import { ethers } from "ethers";
+
+let prveBalance;
 
 function Mywallet() {
   const {
@@ -85,16 +88,21 @@ function Mywallet() {
       await getNonceAccount(provider, userWallet);
       await getEthPrice();
       await getTxHistory(userWallet.address);
+
       connectWalletProvider();
-      console.log("okok");
+      console.log("ok");
       const contractSigner = mainContracts.connect(userWallet);
+
       setStakingContract(contractSigner);
-      console.log(userWallet);
+
       fetchFavoriteTokens(userWallet.connect(provider), userObjectId);
+
       setLoading(false);
       togglePageRefresh(false);
     })();
   }, [userWallet, provider, updatePage]);
+
+  prveBalance = balance;
 
   useEffect(() => {
     if (!balance) return;
@@ -102,6 +110,20 @@ function Mywallet() {
 
     setEthMoney(amount.toFixed(2));
   }, [EthPrice, balance]);
+
+  useEffect(() => {
+    const timer = setInterval(async () => {
+      let newBalance = await provider.getBalance(userWallet.address);
+      newBalance = ethers.utils.formatEther(newBalance);
+      newBalance = String(Number(newBalance).toFixed(3));
+      console.log(newBalance, prveBalance);
+      togglePageRefresh(newBalance === prveBalance ? false : true);
+    }, 1000 * 10);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [provider]);
 
   if (!userWallet) return;
 
@@ -150,10 +172,7 @@ function Mywallet() {
 
           {loading && <FaSpinner className={styles.loader} />}
           <p>balance : {loading ? "-" : `$${EthMoney}`}</p>
-          <p>
-            Address : {userWallet.address.slice(0, 5)}...
-            {userWallet.address.slice(-4)}
-          </p>
+          <p>Address : {userWallet.address}</p>
           <p>Tx number : {loading ? "-" : `${nonce}`}</p>
           <div className={styles.links}>
             <button

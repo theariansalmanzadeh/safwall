@@ -14,6 +14,9 @@
     & label {
       margin-top: 1rem;
     }
+    & input {
+      @include input;
+    }
     & .input {
       @include input;
       &.error {
@@ -28,5 +31,20 @@
   }
   &.Dark {
     @include BG-dark;
+  }
+
+  & .loading {
+    position: absolute;
+    top: 50%;
+    color: $thirdColDark;
+    font-size: 2rem;
+    left: 50%;
+    animation: spinning 0.6s ease-in-out infinite;
+  }
+}
+
+@keyframes spinning {
+  to {
+    transform: rotate(360deg);
   }
 }

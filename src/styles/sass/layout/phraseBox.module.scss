@@ -102,3 +102,18 @@
     width: 100%;
   }
 }
+
+.copyBtn {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
+  background-color: $scondaryCol;
+  border-radius: 0.5rem;
+  border: 3px solid $scondaryCol;
+  color: $primaryWhite;
+  cursor: pointer;
+  @media screen and (max-width: 760px) {
+    width: 100%;
+  }
+}
