@@ -2,11 +2,7 @@ import React, { useRef, useState } from "react";
 import ErrorMessage from "../components/ErrorMessage.js";
 import { BsSearch } from "react-icons/bs";
 import styles from "../styles/sass/pages/SecurityPage.module.scss";
-import {
-  backgroundMode,
-  createUserData,
-  createUserPassword,
-} from "../utils/helper";
+import { backgroundMode, createUserData, detectMob } from "../utils/helper";
 import { useWeb3Ctx } from "../components/Web3Provider";
 import { useNavigate } from "react-router-dom";
 
@@ -58,9 +54,18 @@ function SecurityPage() {
         setloading("");
         return;
       }
+      const wallet = getWalletInstance();
+      setUserWallet(wallet);
     } else {
       setError(true);
     }
+
+    if (detectMob()) {
+      setloading("");
+      setkeyPass(false);
+      navigate("/signup");
+    }
+
     setloading("");
     setkeyPass(true);
   };
@@ -89,7 +94,7 @@ function SecurityPage() {
     console.log(walletKeystore);
 
     setWallet({ wallet, walletKeystore });
-    setUserWallet(wallet);
+
     localStorage.setItem("walletAddress", walletKeystore);
     console.log(wallet.address);
 

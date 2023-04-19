@@ -4,7 +4,7 @@ import { json, useNavigate } from "react-router-dom";
 import styles from "../styles/sass/pages/Home.module.scss";
 import { useWeb3Ctx } from "./Web3Provider";
 import HomePageMoreDetails from "./HomePageMoreDetails.js";
-import { initializeServer, backgroundMode } from "../utils/helper";
+import { initializeServer, backgroundMode, detectMob } from "../utils/helper";
 
 function Home() {
   const { lightMode, setServerParse } = useWeb3Ctx();
@@ -12,6 +12,8 @@ function Home() {
   const navigate = useNavigate();
 
   const classes = backgroundMode(styles.home, styles.homeDark, lightMode);
+  const isMob = detectMob();
+  console.log(isMob);
 
   useEffect(() => {
     initializeServer();

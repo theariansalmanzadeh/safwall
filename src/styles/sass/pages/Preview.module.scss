@@ -24,4 +24,10 @@
       padding: 0.4rem 1.8rem;
     }
   }
+  @media screen and (max-width: 768px) {
+    padding: 0.5rem;
+    & div div:nth-of-type(2) span {
+      font-size: 0.7rem;
+    }
+  }
 }

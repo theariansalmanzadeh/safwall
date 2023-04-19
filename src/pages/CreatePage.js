@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { IoWarningOutline } from "react-icons/io5";
+import { AiOutlineCopy } from "react-icons/ai";
 import { ethers } from "ethers";
 import styles from "../styles/sass/layout/phraseBox.module.scss";
 import { useWeb3Ctx } from "../components/Web3Provider";
 import { backgroundMode } from "../utils/helper";
-
 import { useNavigate, useLocation } from "react-router-dom";
 
 function CreatePage() {
@@ -96,6 +96,7 @@ function CreatePage() {
             Got it{" "}
           </button>
           <button onClick={copyPhraseHandler} className={styles.copyBtn}>
+            <AiOutlineCopy className={styles.icon} />
             Copy
           </button>
         </div>

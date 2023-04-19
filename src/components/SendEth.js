@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { ethers } from "ethers";
 import { useWeb3Ctx } from "./Web3Provider";
 import styles from "../styles/sass/layout/modal.module.scss";
