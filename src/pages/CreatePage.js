@@ -37,7 +37,6 @@ function CreatePage() {
   };
 
   const copyPhraseHandler = () => {
-    console.log(mnemonics.join(" "));
     navigator.clipboard.writeText(mnemonics.join(" "));
   };
 

@@ -4,25 +4,11 @@ import { useAccountCtx } from "../stores/accountProvider";
 
 function AssetsSection() {
   const { TokenDetials } = useAccountCtx();
-  const [showAssests, setShowAssests] = useState(false);
-
-  const AssestHandler = () => {
-    setShowAssests((prev) => {
-      return !prev;
-    });
-  };
-
-  const classes = showAssests
-    ? `${styles.listTokens} ${styles.show}`
-    : `${styles.listTokens}`;
 
   return (
     <React.Fragment>
-      <button className={styles.showBtn} onClick={AssestHandler}>
-        Assests
-      </button>
       <div className={styles.assets}>
-        <ul className={classes}>
+        <ul className={styles.listTokens}>
           <li key={0}>
             <span>symbol</span>
             <span>address</span>

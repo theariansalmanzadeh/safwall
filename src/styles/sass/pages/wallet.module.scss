@@ -137,9 +137,24 @@
     background-color: red;
     height: 80%;
     border-radius: 1rem;
-    background-color: $secondaryWhite;
+    background-color: $activitiesCol;
     overflow: hidden;
     overflow-y: scroll;
+    box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.1);
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
     @media screen and (max-width: 760px) {
       height: 60vh;
     }
@@ -196,16 +211,20 @@
   }
 }
 
-// .donut-ring {
-//   stroke: $scondaryCol;
-//   animation: filling 1s ease-in-out forwards;
-//   transform-origin: 50% 50%;
-//   transform: rotate(-90deg);
-// }
-
-// .donut {
-//   position: relative;
-// }
+.showBtn {
+  margin: 0.5rem 0rem;
+  background-color: #6fbcf0;
+  color: $primaryWhite;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
+  &:hover {
+    background-color: $thirdCol;
+  }
+}
 
 .loader {
   color: $scondaryCol;
@@ -214,6 +233,19 @@
   font-size: 2.4rem;
   animation: spinner 1s linear infinite;
   position: absolute;
+}
+
+.addressWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  & p {
+    margin-top: 1rem;
+  }
+  & button {
+    border: none;
+    background-color: transparent;
+  }
 }
 
 @keyframes spinner {

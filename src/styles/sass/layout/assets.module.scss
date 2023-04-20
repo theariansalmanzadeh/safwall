@@ -2,7 +2,8 @@
 
 .assets {
   height: 27vh;
-  // border: 1px solid red;
+  // drop-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
   background-color: transparent;
 
   overflow: hidden;
@@ -10,10 +11,10 @@
     height: 100%;
     margin: 0;
     padding: 0 1rem;
-    background-color: $thirdColDark;
+    background-color: $activitiesCol;
     border-radius: 0.5rem;
     list-style: none;
-    transform: translateY(-100%);
+    // transform: translateY(-100%);
     overflow-y: scroll;
     transition: all 0.5s linear;
     &::-webkit-scrollbar {
@@ -32,7 +33,7 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      // border-bottom: 1px solid ;
+      color: $scondaryCol;
       & span:nth-child(2) {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -45,20 +46,5 @@
         color: $primaryCol;
       }
     }
-  }
-}
-
-.showBtn {
-  margin: 0.5rem 0rem;
-  background-color: #6fbcf0;
-  color: $primaryWhite;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 1.2rem;
-  box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
-  &:hover {
-    background-color: $thirdCol;
   }
 }

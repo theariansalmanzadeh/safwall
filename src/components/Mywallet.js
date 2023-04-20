@@ -9,6 +9,7 @@ import SendModal from "./layout/SendModal";
 import AddContractsModal from "./layout/AddContractsModal";
 import AssetsSection from "./AssetsSection.js";
 import { ethers } from "ethers";
+import { AiOutlineCopy } from "react-icons/ai";
 
 let prveBalance;
 
@@ -47,6 +48,10 @@ function Mywallet() {
 
   const closeModalHadler = () => {
     setIsSend(false);
+  };
+
+  const disPlayAddress = (address) => {
+    return address.slice(0, 5) + "..." + address.slice(-3);
   };
 
   const showTxHistory = () => {
@@ -172,15 +177,16 @@ function Mywallet() {
 
           {loading && <FaSpinner className={styles.loader} />}
           <p>balance : {loading ? "-" : `$${EthMoney}`}</p>
-          <p>Address : {userWallet.address}</p>
+          <div className={styles.addressWrapper}>
+            <p>Address : {disPlayAddress(userWallet.address)}</p>
+            <button
+              onClick={() => navigator.clipboard.writeText(userWallet.address)}
+            >
+              <AiOutlineCopy />
+            </button>
+          </div>
           <p>Tx number : {loading ? "-" : `${nonce}`}</p>
           <div className={styles.links}>
-            <button
-              className={styles.AddToken}
-              onClick={() => toggleContractModal(true)}
-            >
-              import Token
-            </button>
             <a
               href={`https://goerli.etherscan.io/address/${userWallet.address}`}
               target="_blank"
@@ -188,6 +194,12 @@ function Mywallet() {
             >
               view Account on etherscan
             </a>
+            <button
+              className={styles.showBtn}
+              onClick={() => toggleContractModal(true)}
+            >
+              import Token
+            </button>
           </div>
           <AssetsSection />
         </div>

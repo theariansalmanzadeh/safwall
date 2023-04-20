@@ -23,7 +23,7 @@ function AccountWallet() {
         onSelect={(k) => setKey(k)}
         className={classes}
       >
-        <Tab eventKey="home" title="Home">
+        <Tab eventKey="home" title="Activities">
           <Mywallet />
         </Tab>
         <Tab eventKey="profile" title="Staking">
