@@ -1,0 +1,56 @@
+@import "../utils/Variables.scss";
+@import "../components/SubmitButton.module.scss";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.checkBox {
+  width: 80%;
+  padding: 0.5rem 0.5rem;
+  height: 4rem;
+  background-color: red;
+  display: flex;
+  gap: 1rem;
+  border-radius: 1rem;
+  background-color: $thirdCol;
+}
+
+.showPhrases {
+  margin: 1rem 0 1rem 0;
+  background-color: yellow;
+  width: 80%;
+  padding: 0.5rem 0.5rem;
+  height: 4rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 1rem;
+  background-color: $thirdColLight;
+}
+
+.boxPhrase,
+.child {
+  padding: 0.5rem 0.5rem;
+  background-color: $createPhraseCol;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.Btns {
+  display: flex;
+  width: 100%;
+  padding-right: 5rem;
+  justify-content: flex-end;
+  gap: 2rem;
+  & > button {
+    @include submitBtn;
+  }
+}
+
+.checkBtn {
+}

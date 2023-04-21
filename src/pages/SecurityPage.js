@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import ErrorMessage from "../components/ErrorMessage.js";
+import InputPhrases from "../components/InputPhrases.js";
 import { BsSearch } from "react-icons/bs";
 import styles from "../styles/sass/pages/SecurityPage.module.scss";
 import { backgroundMode, createUserData, detectMob } from "../utils/helper";
@@ -17,6 +18,7 @@ function SecurityPage() {
   const [error, setError] = useState(false);
   const [keyPass, setkeyPass] = useState(false);
   const [loading, setloading] = useState("");
+  const [isOrderCorrect, corre] = useState([]);
 
   const navigate = useNavigate();
 
@@ -29,20 +31,21 @@ function SecurityPage() {
     lightMode
   );
 
-  const securityCheckHandler = async (event) => {
-    event.preventDefault();
+  const securityCheckHandler = async (status) => {
+    // event.preventDefault();
 
     const walletCreated = getWalletCreated();
 
     setloading("userAccount");
     setError(false);
-    console.log(walletCreated.mnemonics);
+    // console.log(walletCreated.mnemonics);
 
-    const mnmonics = walletCreated.mnemonics.split(" ");
-    const keys = inputRef.current.value;
-    const status = keys.split(" ").every((key, indx) => key === mnmonics[indx]);
+    // const mnmonics = walletCreated.mnemonics.split(" ");
+    // const keys = inputRef.current.value;
+    // const status = keys.split(" ").every((key, indx) => key === mnmonics[indx]);
 
-    console.log(walletCreated.mnemonics);
+    // console.log(walletCreated.mnemonics);
+    if (!status) return;
 
     if (status) {
       setError(false);
@@ -104,21 +107,10 @@ function SecurityPage() {
   return (
     <div className={classes}>
       <h3>write your key in order in the places</h3>
-      <form onSubmit={securityCheckHandler}>
-        <div>
-          <input type="text" placeholder="exp: name oven" ref={inputRef} />
-          <button type="submit">Submit</button>
-          <button
-            type="button"
-            className={styles.retrieve}
-            onClick={() => {
-              navigate("/createwallet", { state: "retrieve Pass" });
-            }}
-          >
-            Back
-          </button>
-        </div>
-      </form>
+      <InputPhrases
+        securityCheck={securityCheckHandler}
+        getPhrases={getWalletCreated}
+      />
       {keyPass && (
         <div>
           <form className={styles.password} onSubmit={passwordHandler}>

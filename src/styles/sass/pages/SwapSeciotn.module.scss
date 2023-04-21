@@ -112,6 +112,7 @@
     & .swapBtn {
       width: 100%;
       display: inline-block;
+      // position: relative;
       border: none;
       border-radius: 1rem;
       text-align: center;
@@ -126,6 +127,16 @@
       &:hover {
         background-color: $thirdColDark;
         color: $thirdDark;
+      }
+      & .error {
+        color: $warning;
+      }
+      & .loader {
+        animation: spinning 1s infinite ease-in-out;
+        // position: absolute;
+        top: 50%;
+        color: $scondaryCol;
+        left: 1rem;
       }
     }
   }

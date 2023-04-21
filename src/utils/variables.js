@@ -228,11 +228,6 @@ export const tokenSwap = [
     contractAddress: "0x326C977E6efc84E512bB9C30f76E30c160eD06FB",
   },
   {
-    name: "USDT",
-    imgSrc: "./images/tether.png",
-    contractAddress: "0xC2C527C0CACF457746Bd31B2a698Fe89de2b6d49",
-  },
-  {
     name: "UNIS",
     imgSrc: "./images/uniswapLogo.png",
     contractAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",

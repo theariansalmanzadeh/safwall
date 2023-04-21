@@ -23,9 +23,11 @@ function Swap() {
   const [selectToken, SetSelectToken] = useState(false);
   const [tokenPrice, setTokenPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAllowedLoading, setIsAllowedLoading] = useState(false);
   const [isSwapLoading, setIsSwapLoading] = useState(false);
   const [balance, setBalance] = useState("");
   const [error, setError] = useState(false);
+  const [priseInpactError, setPriseInpactError] = useState(false);
 
   const buyTokenRef = useRef();
   const EthInputRef = useRef();
@@ -52,6 +54,15 @@ function Swap() {
   const changeInputHandler = async () => {
     const valueIn = EthInputRef.current.value;
     const valueOut = valueIn * tokenPrice;
+
+    setPriseInpactError(false);
+    setError(false);
+
+    if (valueIn > 0.5) {
+      setPriseInpactError(true);
+      return;
+    }
+    setIsAllowedLoading(true);
     buyTokenRef.current.value = valueOut.toFixed(3);
     let balance = await getBalace(provider, userWallet.connect(provider));
     setBalance(balance);
@@ -63,6 +74,7 @@ function Swap() {
     } else {
       setError(false);
     }
+    setIsAllowedLoading(false);
   };
 
   const swapHanlder = async (event) => {
@@ -96,6 +108,8 @@ function Swap() {
     }
     setIsSwapLoading(false);
   };
+
+  console.log(isAllowedLoading);
 
   return (
     <div className={classes}>
@@ -164,8 +178,12 @@ function Swap() {
         )}
 
         <button type="submit" onClick={swapHanlder} className={styles.swapBtn}>
-          {!error && <p>SWAP</p>}
-          {error && <p>insuffient Balance</p>}
+          {priseInpactError && (
+            <p className={styles.error}>Hight price inpact</p>
+          )}
+          {isAllowedLoading && <ImSpinner8 className={styles.loader} />}
+          {error && <p className={styles.error}>insuffient Balance</p>}
+          {!error && !priseInpactError && !isAllowedLoading && <p>SWAP</p>}
         </button>
       </form>
       <div className={styles.contributor}>
