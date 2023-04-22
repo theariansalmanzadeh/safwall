@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import ErrorMessage from "../components/ErrorMessage.js";
-import InputPhrases from "../components/InputPhrases.js";
+import InputPhrases from "../components/InputPhrases";
 import { BsSearch } from "react-icons/bs";
 import styles from "../styles/sass/pages/SecurityPage.module.scss";
 import { backgroundMode, createUserData, detectMob } from "../utils/helper";
@@ -36,16 +36,11 @@ function SecurityPage() {
 
     const walletCreated = getWalletCreated();
 
+    if (!status) return;
+
     setloading("userAccount");
     setError(false);
-    // console.log(walletCreated.mnemonics);
 
-    // const mnmonics = walletCreated.mnemonics.split(" ");
-    // const keys = inputRef.current.value;
-    // const status = keys.split(" ").every((key, indx) => key === mnmonics[indx]);
-
-    // console.log(walletCreated.mnemonics);
-    if (!status) return;
 
     if (status) {
       setError(false);
@@ -76,7 +71,6 @@ function SecurityPage() {
   const passwordHandler = async (e) => {
     e.preventDefault();
 
-    console.log(passRef.current.value);
     setloading("keyStore");
 
     const wallet = getWalletInstance();

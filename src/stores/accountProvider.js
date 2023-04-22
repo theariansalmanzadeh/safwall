@@ -25,13 +25,18 @@ function AccountProvider({ children }) {
     setNonce(res);
   };
   const getTxHistory = async (address) => {
-    const apiKey = "65HPY3B4FJ7KUQRUK3U8Z5Y9B41ESG41XJ";
-    const url = `https://api-goerli.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=${apiKey}`;
-    const res = await fetch(url);
-    const Txhis = await res.json();
+    try {
+      const apiKey = "65HPY3B4FJ7KUQRUK3U8Z5Y9B41ESG41XJ";
+      const url = `https://api-goerli.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=${apiKey}`;
+      const res = await fetch(url);
+      const Txhis = await res.json();
 
-    console.log(Txhis);
-    setTxHistory(Txhis);
+      console.log(Txhis);
+      setTxHistory(Txhis);
+    } catch (e) {
+      console.log(e.message);
+      setTxHistory([]);
+    }
   };
 
   const togglePageRefresh = (state) => {

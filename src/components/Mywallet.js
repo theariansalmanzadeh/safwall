@@ -54,8 +54,10 @@ function Mywallet() {
     return address.slice(0, 5) + "..." + address.slice(-3);
   };
 
+  console.log(TxHistory);
   const showTxHistory = () => {
     if (!TxHistory) return <FaSpinner className={styles.loadingActivities} />;
+    if (TxHistory.status === "-1") return <p>could not get infos</p>;
     if (TxHistory.status === "0") return <p>{TxHistory.message}</p>;
     return TxHistory.result.map((tx) => {
       return (
@@ -88,22 +90,27 @@ function Mywallet() {
     if (updatePage === false) return;
 
     (async () => {
-      setLoading(true);
-      await getBalanceAccount(provider, userWallet);
-      await getNonceAccount(provider, userWallet);
-      await fetchFavoriteTokens(userWallet.connect(provider), userObjectId);
+      try {
+        setLoading(true);
+        await getBalanceAccount(provider, userWallet);
+        await getNonceAccount(provider, userWallet);
+        await fetchFavoriteTokens(userWallet.connect(provider), userObjectId);
 
-      await getEthPrice();
-      await getTxHistory(userWallet.address);
+        await getEthPrice();
+        await getTxHistory(userWallet.address);
 
-      connectWalletProvider();
+        connectWalletProvider();
 
-      const contractSigner = mainContracts.connect(userWallet);
+        const contractSigner = mainContracts.connect(userWallet);
 
-      setStakingContract(contractSigner);
+        setStakingContract(contractSigner);
 
-      setLoading(false);
-      togglePageRefresh(false);
+        setLoading(false);
+        togglePageRefresh(false);
+      } catch (e) {
+        setLoading(false);
+        togglePageRefresh(false);
+      }
     })();
   }, [userWallet, provider, updatePage]);
 
