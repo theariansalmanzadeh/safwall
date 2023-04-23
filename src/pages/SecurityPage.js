@@ -41,7 +41,6 @@ function SecurityPage() {
     setloading("userAccount");
     setError(false);
 
-
     if (status) {
       setError(false);
       const res = await createUserData(
@@ -100,7 +99,7 @@ function SecurityPage() {
 
   return (
     <div className={classes}>
-      <h3>write your key in order in the places</h3>
+      <h3>Please put your secret phrases in order</h3>
       <InputPhrases
         securityCheck={securityCheckHandler}
         getPhrases={getWalletCreated}

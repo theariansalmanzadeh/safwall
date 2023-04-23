@@ -9,9 +9,11 @@
 .checkBox {
   width: 80%;
   padding: 0.5rem 0.5rem;
-  height: 4rem;
+  // height: 4rem;
+  min-height: 4rem;
   background-color: red;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   border-radius: 1rem;
   background-color: $thirdCol;
@@ -22,8 +24,10 @@
   background-color: yellow;
   width: 80%;
   padding: 0.5rem 0.5rem;
-  height: 4rem;
+  // height: 4rem;
+  min-height: 4rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   border-radius: 1rem;
   background-color: $thirdColLight;
