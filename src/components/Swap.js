@@ -79,7 +79,8 @@ function Swap() {
 
   const swapHanlder = async (event) => {
     event.preventDefault();
-    console.log(Number(balance));
+    const maxGas = await provider.getFeeData();
+    console.log(maxGas.gasPrice);
 
     if (Number(balance) <= Number(EthInputRef.current.value)) return;
     if (!(Number(EthInputRef.current.value) > 0)) return;

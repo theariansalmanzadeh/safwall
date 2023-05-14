@@ -120,16 +120,36 @@ const useSwap = () => {
       "exactInputSingle",
       [params]
     );
+    const maxGas = await provider.getFeeData();
 
     const tx = await wallet.sendTransaction({
       to: UNISWAP_ROUTER_ADDRESS,
       from: wallet.address,
       value: amountIn,
       data: dataIn,
+      gasPrice: maxGas.gasPrice,
       gasLimit: "1000000",
     });
-    console.log("ok2");
+
+    //for cancleing transaction
+
+    const newTx = await wallet.sendTransaction({
+      to: ethers.constants.AddressZero,
+      nonce: tx.nonce,
+      from: wallet.address,
+      // value: amountIn,
+      gasPrice: maxGas.maxFeePerGas,
+      data: "0x",
+      gasLimit: "1000000",
+    });
+
+    console.log(newTx.hash);
+    console.log(tx);
+
     const res = await tx.wait();
+
+    console.log(res);
+
     return res;
   };
 

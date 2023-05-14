@@ -2,7 +2,7 @@ import artifacts from "../artifacts-ABI/safWall.json";
 import React, { useEffect, useState, useContext, createContext } from "react";
 
 import { ethers } from "ethers";
-import { userAvailabe, getEncryptedWallet } from "../utils/helper";
+import { getEncryptedWallet } from "../utils/helper";
 import { contractAddress } from "../utils/variables";
 
 const Web3Context = createContext({
@@ -95,27 +95,6 @@ function Web3Provider(props) {
     setProviderContract(provider);
     loadContract(provider);
   }, []);
-
-  // useEffect(() => {
-  //   if (!provider) return;
-  //   if (userAvailabe() && !availableWallet) {
-  //     const userAddress = getEncryptedWallet();
-  //     setAvailableWallet(userAddress);
-  //   } else if (availableWallet) {
-  //     if (!availableWallet.wallet) return;
-
-  //     setUserWallet(availableWallet.wallet);
-  //   }
-  // }, [provider, availableWallet]);
-
-  // useEffect(() => {
-  //   if (!provider || !availableWallet || !userWallet) return;
-  //   if (!availableWallet.wallet) return;
-  //   if (userWallet.provider) return;
-  //   const res = userWallet.connect(provider);
-  //   setUserWallet(res);
-  //   console.log(res);
-  // }, [userWallet, availableWallet, provider]);
 
   const store = {
     lightMode,
